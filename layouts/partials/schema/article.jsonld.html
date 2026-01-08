@@ -1,0 +1,27 @@
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "{{ .Title | plainify }}",
+  "description": "{{ with .Params.description }}{{ . | plainify }}{{ end }}",
+  "image": "{{ with .Params.images }}{{ index . 0 }}{{ end }}",
+  "author": {
+    "@type": "Person",
+    "name": "{{ with .Params.author }}{{ . }}{{ else }}{{ .Site.Params.author }}{{ end }}"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "{{ .Site.Params.author }}",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "{{ .Site.BaseURL }}images/logo.png"
+    }
+  },
+  "datePublished": "{{ .Date.Format "2006-01-02" }}",
+  "dateModified": "{{ .Lastmod.Format "2006-01-02" }}",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "{{ .Permalink }}"
+  }
+}
+</script>

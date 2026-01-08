@@ -1,0 +1,27 @@
+/* ===== FIX PAPERMOD HEADER BREAKING ===== */
+
+/* Header container */
+.header {
+  align-items: center;
+}
+
+/* Logo container */
+.logo {
+  max-width: 70%;
+}
+
+/* Site title */
+.logo a {
+  font-size: 1.15rem;     /* smaller title */
+  line-height: 1.25;
+  white-space: nowrap;   /* PREVENT line break */
+}
+
+/* Navigation menu */
+.nav {
+  flex-shrink: 0;
+}
+
+.nav a {
+  font-size: 0.95rem;
+}

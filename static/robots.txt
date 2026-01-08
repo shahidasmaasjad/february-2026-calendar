@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://february2026calendarideas.online/sitemap.xml

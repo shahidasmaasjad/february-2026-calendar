@@ -1,0 +1,92 @@
+baseURL = "https://february2026calendarideas.online/"
+languageCode = "en-us"
+title = "February 2026 Calendar Ideas: Crafts, Holidays & Coloring"
+theme = "PaperMod"
+
+[pagination]
+  pagerSize = 10
+
+pygmentsUseClasses = true
+pygmentsCodeFences = true
+
+defaultTheme = "auto"
+
+# --- BING SEO CRITICAL SECTION ---
+enableRobotsTXT = true
+canonifyURLs = true
+
+[sitemap]
+  changefreq = "weekly"
+  filename = "sitemap.xml"
+  priority = 0.5
+
+[permalinks]
+  # This creates the "Flat" structure: domain.com/category-name/post-title/
+  # It applies to all sections (categories) created by our Python script.
+  blog = "/blog/:slug/"
+
+# ---------------------------------
+
+[params]
+  env = "production"
+  title = "February 2026 Calendar Ideas: Crafts, Holidays & Coloring"
+  description = "Download blank February 2026 calendar templates in PDF or Word. Includes marked federal holidays like Presidents' Day (Feb 16) and space for notes."
+  author = "William Howell"
+  customCSS = ["css/custom.css"]
+[params.label]
+    text = "February 2026 Calendar Ideas"
+  
+  # BING SIGNALS
+  ShowReadingTime = true
+  ShowShareButtons = false
+  ShowPostNavLinks = true
+  ShowBreadCrumbs = true  # CRITICAL: Bing uses this to understand site structure
+  ShowCodeCopyButtons = true
+  ShowWordCount = false
+  disableScrollToTop = false
+  comments = false
+  defaultTheme = "auto"
+
+  [params.profileMode]
+    enabled = false
+    title = "Hi, I'm Your Name 👋"
+    subtitle = "Welcome to my Hugo blog powered by PaperMod."
+    imageUrl = "images/profile.jpg"
+    imageTitle = "Profile Picture"
+    buttons = [
+      { name = "Posts", url = "/posts" },
+      { name = "About", url = "/about" }	  
+    ]
+
+[menu]
+
+[[menu.main]]
+name = "Home"
+url = "/"
+weight = 1
+
+[[menu.main]]
+name = "Blog"
+url = "/blog/"
+weight = 2
+
+[[menu.main]]
+name = "Privacy Policy"
+url = "/privacy-policy/"
+weight = 3
+
+[[menu.main]]
+name = "About"
+url = "/about/"
+weight = 4
+
+[[menu.main]]
+name = "Contact"
+url = "/contact/"
+weight = 5
+
+[taxonomies]
+  category = "categories"
+  tag = "tags"
+
+enableRobotsTXT = true

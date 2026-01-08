@@ -1,0 +1,23 @@
+
+
+<aside class="sidebar">
+<script type="text/javascript">
+	atOptions = {
+		'key' : '4a1f1119f949a4af74d56b8a3af8b867',
+		'format' : 'iframe',
+		'height' : 250,
+		'width' : 300,
+		'params' : {}
+	};
+</script>
+<script type="text/javascript" src="//heateradvisoraplenty.com/4a1f1119f949a4af74d56b8a3af8b867/invoke.js"></script>
+
+    <section class="recent-posts">
+		<h3>Recent Posts</h3>
+        <ul>
+            {{ range first 8 .Site.RegularPages.ByDate.Reverse }}
+            <li><a href="{{ .RelPermalink }}">{{ .Title }}</a></li>
+            {{ end }}
+        </ul>		
+    </section>
+</aside>
