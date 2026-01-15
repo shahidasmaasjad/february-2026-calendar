@@ -47,13 +47,17 @@ jobs:
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
 
-      # 7️⃣ Notify Bing via IndexNow
+      # 7️⃣ Notify Bing via IndexNow (FIXED)
       - name: Ping IndexNow
         run: |
           curl -X POST "https://www.bing.com/indexnow" \
-          -H "Content-Type: application/json" \
-          -d '{
-            "host": "february2026calendarideas.online",
-            "key": "'"${{ secrets.INDEXNOW_KEY }}"'",
-            "keyLocation": "https://february2026calendarideas.online/'"${{ secrets.INDEXNOW_KEY }}"'.txt"
-          }'
+            -H "Content-Type: application/json" \
+            -d '{
+              "host": "february2026calendarideas.online",
+              "key": "3f83cbba186547b3891f197aa59652fd",
+              "keyLocation": "https://february2026calendarideas.online/3f83cbba186547b3891f197aa59652fd.txt",
+              "urlList": [
+                "https://february2026calendarideas.online/",
+                "https://february2026calendarideas.online/sitemap.xml"
+              ]
+            }'
