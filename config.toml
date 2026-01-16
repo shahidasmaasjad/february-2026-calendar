@@ -33,6 +33,7 @@ canonifyURLs = true
   description = "Download blank February 2026 calendar templates in PDF or Word. Includes marked federal holidays like Presidents' Day (Feb 16) and space for notes."
   author = "William Howell"
   customCSS = ["css/custom.css"]
+  showSidebar = false
 [params.label]
     text = "February 2026 Calendar Ideas"
   
