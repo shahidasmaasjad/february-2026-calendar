@@ -41,9 +41,6 @@
     {{- else }}{{ .Content }}{{ end }}
   </div>
   {{- end }}
-  
-
-
   <footer class="post-footer">
     {{- $tags := .Language.Params.Taxonomies.tag | default "tags" }}
     <ul class="post-tags">
