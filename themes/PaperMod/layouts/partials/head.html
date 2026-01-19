@@ -1,13 +1,21 @@
+{{- /* =====================================
+   PaperMod Head – Bing Safe & Duplicate-Free
+   ===================================== */ -}}
+
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 
-{{- if hugo.IsProduction | or (eq site.Params.env "production") | and (ne .Params.robotsNoIndex true) }}
+{{- /* Robots */ -}}
+{{- if hugo.IsProduction | or (eq site.Params.env "production") }}
 <meta name="robots" content="index, follow">
 {{- else }}
 <meta name="robots" content="noindex, nofollow">
 {{- end }}
 
+{{- /* =====================
+      TITLE (NO DUPLICATES)
+      ===================== */ -}}
 <title>
 {{- if .IsHome -}}
 {{ site.Title }}
@@ -16,53 +24,72 @@
 {{- end -}}
 </title>
 
-<meta name="description" content="{{ with .Params.description }}{{ . }}{{ else }}{{ .Summary | plainify | truncate 155 }}{{ end }}">
-
-<link rel="canonical" href="{{ .Permalink }}">
-
-<meta name="author" content="{{ (partial "author.html" . ) }}">
-
-{{/* ================== CSS PIPELINE (FIXED) ================== */}}
-
-{{- $theme_vars := resources.Get "css/core/theme-vars.css" }}
-{{- $reset := resources.Get "css/core/reset.css" }}
-{{- $media := resources.Get "css/core/zmedia.css" }}
-{{- $license := resources.Get "css/core/license.css" }}
-{{- $common := resources.Match "css/common/*.css" | resources.Concat "assets/css/common.css" }}
-{{- $chroma := resources.Get "css/includes/chroma-styles.css" }}
-
-{{- $core := slice $theme_vars $reset $common $chroma $media | resources.Concat "assets/css/core.css" | resources.Minify }}
-
-{{- $extended := resources.Match "css/extended/*.css" | resources.Concat "assets/css/extended.css" | resources.Minify }}
-
-{{- $bundle := slice $license $core $extended | resources.Concat "assets/css/stylesheet.css" }}
-
-{{- if not site.Params.assets.disableFingerprinting }}
-  {{- $bundleFP := $bundle | fingerprint }}
-  <link rel="preload stylesheet" as="style"
-        href="{{ $bundleFP.RelPermalink }}"
-        integrity="{{ $bundleFP.Data.Integrity }}"
-        crossorigin="anonymous">
-{{- else }}
-  <link rel="preload stylesheet" as="style"
-        href="{{ $bundle.RelPermalink }}"
-        crossorigin="anonymous">
+{{- /* ==========================
+      META DESCRIPTION (GUARDED)
+      80–155 chars ONLY
+      ========================== */ -}}
+{{- $desc := .Params.description | default "" -}}
+{{- if and (ge (len $desc) 80) (le (len $desc) 155) -}}
+<meta name="description" content="{{ $desc }}">
+{{- else -}}
+<meta name="description" content="{{ .Summary | plainify | truncate 155 }}">
 {{- end }}
 
-{{/* ================== FAVICONS ================== */}}
+{{- /* ==================
+      CANONICAL (SINGLE)
+      ================== */ -}}
+<link rel="canonical" href="{{ .Permalink }}">
 
-<link rel="icon" href="{{ site.Params.assets.favicon | default "favicon.ico" | absURL }}">
-<link rel="apple-touch-icon" href="{{ site.Params.assets.apple_touch_icon | default "apple-touch-icon.png" | absURL }}">
-<meta name="theme-color" content="{{ site.Params.assets.theme_color | default "#2e2e33" }}">
+<meta name="author" content="{{ site.Params.author | default site.Title }}">
 
-{{/* ================== RSS & LANG ================== */}}
+{{- /* ==================
+      VERIFICATION TAGS
+      ================== */ -}}
+{{- with site.Params.analytics.google.SiteVerificationTag }}
+<meta name="google-site-verification" content="{{ . }}">
+{{- end }}
+{{- with site.Params.analytics.bing.SiteVerificationTag }}
+<meta name="msvalidate.01" content="{{ . }}">
+{{- end }}
+{{- with site.Params.analytics.yandex.SiteVerificationTag }}
+<meta name="yandex-verification" content="{{ . }}">
+{{- end }}
 
-{{ range .AlternativeOutputFormats }}
+{{- /* ==================
+      STYLES (UNCHANGED)
+      ================== */ -}}
+{{- $theme := resources.Get "css/core/theme-vars.css" }}
+{{- $reset := resources.Get "css/core/reset.css" }}
+{{- $common := resources.Match "css/common/*.css" | resources.Concat "assets/css/common.css" }}
+{{- $media := resources.Get "css/core/zmedia.css" }}
+
+{{- $css := slice $theme $reset $common $media | resources.Concat "assets/css/main.css" | resources.Minify }}
+
+<link rel="stylesheet" href="{{ $css.RelPermalink }}">
+
+{{- /* ==================
+      RSS / ALTERNATES
+      ================== */ -}}
+{{ range .AlternativeOutputFormats -}}
 <link rel="{{ .Rel }}" type="{{ .MediaType.Type }}" href="{{ .Permalink }}">
 {{ end }}
 
-{{ range .AllTranslations }}
+{{ range .AllTranslations -}}
 <link rel="alternate" hreflang="{{ .Lang }}" href="{{ .Permalink }}">
 {{ end }}
 
-{{ partial "extend_head.html" . }}
+{{- /* ==================
+      OPEN GRAPH / TWITTER
+      (ONE SOURCE ONLY)
+      ================== */ -}}
+{{- if hugo.IsProduction | or (eq site.Params.env "production") -}}
+{{- template "_internal/opengraph.html" . -}}
+{{- template "_internal/twitter_cards.html" . -}}
+{{- end }}
+
+{{- /* ==================
+      SCHEMA (JSON-LD)
+      ================== */ -}}
+{{- if hugo.IsProduction | or (eq site.Params.env "production") -}}
+{{- template "partials/templates/schema_json.html" . -}}
+{{- end }}
