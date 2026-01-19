@@ -7,8 +7,8 @@
 
 <head>
     <meta charset="UTF-8">
-    {{- partial "head.html" . }}
-    {{ partial "sidebar.html" . }}
+
+    {{- /* HEAD MUST BE CALLED ONLY ONCE */ -}}
     {{- partial "head.html" . }}
 
     <!-- ================= SCHEMA (JSON-LD) ================= -->
@@ -20,8 +20,6 @@
     {{ end }}
     <!-- ==================================================== -->
 
-    <!-- Ad script -->
-   
 </head>
 
 <body class="
@@ -34,6 +32,9 @@ list
 " id="top">
 
     {{- partialCached "header.html" . .Page -}}
+
+    {{- /* SIDEBAR BELONGS IN BODY */ -}}
+    {{- partial "sidebar.html" . }}
 
     <main class="main">
         {{- block "main" . }}{{ end }}
@@ -56,16 +57,14 @@ list
       var sc_invisible=1; 
       var sc_security="e9d93c5a"; 
     </script>
-    <script type="text/javascript"
-      src="https://www.statcounter.com/counter/counter.js"
-      async></script>
+    <script async src="https://www.statcounter.com/counter/counter.js"></script>
+
     <noscript>
       <div class="statcounter">
-        <a title="Web Analytics" href="https://statcounter.com/" target="_blank">
+        <a href="https://statcounter.com/" target="_blank" rel="noopener">
           <img class="statcounter"
-          src="https://c.statcounter.com/12681502/0/e9d93c5a/1/"
-          alt="Web Analytics"
-          referrerPolicy="no-referrer-when-downgrade">
+               src="https://c.statcounter.com/12681502/0/e9d93c5a/1/"
+               alt="Web Analytics">
         </a>
       </div>
     </noscript>
