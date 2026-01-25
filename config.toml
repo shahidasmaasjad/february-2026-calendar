@@ -18,7 +18,7 @@ pygmentsCodeFences = true
   priority = 0.5
 
 [permalinks]
-  blog = "/blog/:slug/"
+  blog = "/blog/new-khdrp-slug-apsef-trends/"
 
 [params]
   env = "production"
