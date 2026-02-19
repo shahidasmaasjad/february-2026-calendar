@@ -5,6 +5,18 @@
     {{ partial "breadcrumbs.html" . }}
     <h1 class="post-title entry-hint-parent">
       {{ .Title }}
+<div align="center">
+<script>
+  atOptions = {
+    'key' : '4a1f1119f949a4af74d56b8a3af8b867',
+    'format' : 'iframe',
+    'height' : 250,
+    'width' : 300,
+    'params' : {}
+  };
+</script>
+<script src="https://beastlyfluke.com/4a1f1119f949a4af74d56b8a3af8b867/invoke.js"></script>
+</div>
       {{- if .Draft }}
       <span class="entry-hint" title="Draft">
         <svg xmlns="http://www.w3.org/2000/svg" height="35" viewBox="0 -960 960 960" fill="currentColor">
@@ -55,23 +67,6 @@
     {{- partial "share_icons.html" . -}}
     {{- end }}
   </footer>
-<!-- Default Statcounter code for christmas2021.github.io
-https://christmas2021.github.io/ -->
-<script type="text/javascript">
-var sc_project=12681502; 
-var sc_invisible=1; 
-var sc_security="e9d93c5a"; 
-</script>
-<script type="text/javascript"
-src="https://www.statcounter.com/counter/counter.js"
-async></script>
-<noscript><div class="statcounter"><a title="Web Analytics"
-href="https://statcounter.com/" target="_blank"><img
-class="statcounter"
-src="https://c.statcounter.com/12681502/0/e9d93c5a/1/"
-alt="Web Analytics"
-referrerPolicy="no-referrer-when-downgrade"></a></div></noscript>
-<!-- End of Statcounter Code -->
   {{- if (.Param "comments") }}
   {{- partial "comments.html" . }}
   {{- end }}
