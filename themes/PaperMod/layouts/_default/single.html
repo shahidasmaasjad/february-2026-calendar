@@ -5,18 +5,6 @@
     {{ partial "breadcrumbs.html" . }}
     <h1 class="post-title entry-hint-parent">
       {{ .Title }}
-<div align="center">
-<script>
-  atOptions = {
-    'key' : '4a1f1119f949a4af74d56b8a3af8b867',
-    'format' : 'iframe',
-    'height' : 250,
-    'width' : 300,
-    'params' : {}
-  };
-</script>
-<script src="https://beastlyfluke.com/4a1f1119f949a4af74d56b8a3af8b867/invoke.js"></script>
-</div>
       {{- if .Draft }}
       <span class="entry-hint" title="Draft">
         <svg xmlns="http://www.w3.org/2000/svg" height="35" viewBox="0 -960 960 960" fill="currentColor">
@@ -45,7 +33,18 @@
   {{- if (.Param "ShowToc") }}
   {{- partial "toc.html" . }}
   {{- end }}
-
+<div align="center">
+<script>
+  atOptions = {
+    'key' : '4a1f1119f949a4af74d56b8a3af8b867',
+    'format' : 'iframe',
+    'height' : 250,
+    'width' : 300,
+    'params' : {}
+  };
+</script>
+<script src="https://beastlyfluke.com/4a1f1119f949a4af74d56b8a3af8b867/invoke.js"></script>
+</div>
   {{- if .Content }}
   <div class="post-content">
     {{- if not (.Param "disableAnchoredHeadings") }}
