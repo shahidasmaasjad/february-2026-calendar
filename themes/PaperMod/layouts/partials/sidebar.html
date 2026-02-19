@@ -1,5 +1,8 @@
-<div align="center">
-<script>
+<aside class="sidebar">
+
+  <!-- SIDEBAR AD -->
+  <div class="sidebar-ad">
+    <script>
   atOptions = {
     'key' : '4a1f1119f949a4af74d56b8a3af8b867',
     'format' : 'iframe',
@@ -9,16 +12,18 @@
   };
 </script>
 <script src="https://beastlyfluke.com/4a1f1119f949a4af74d56b8a3af8b867/invoke.js"></script>
-</div>
-<aside class="sidebar">
-    <section class="recent-posts widget">
-        <h3>Recent Posts</h3>
-        <ul>
-            {{ range first 8 .Site.RegularPages.ByDate.Reverse }}
-                <li>
-                    <a href="{{ .RelPermalink }}">{{ .Title }}</a>
-                </li>
-            {{ end }}
-        </ul>
-    </section>
+  </div>
+
+  <!-- RECENT POSTS -->
+  <section class="recent-posts widget">
+    <h3>Recent Posts</h3>
+    <ul>
+      {{ range first 8 .Site.RegularPages.ByDate.Reverse }}
+        <li>
+          <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+        </li>
+      {{ end }}
+    </ul>
+  </section>
+
 </aside>
