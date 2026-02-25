@@ -22,7 +22,7 @@ pygmentsCodeFences = true
 
 [params]
   env = "production"
-  title = "February 2026 Calendar Ideas: Crafts, Holidays & Coloring"
+  title = "25+ Creative February 2026 Calendar Ideas: Crafts & Holidays"
   author = "William Howell"
   customCSS = ["css/custom.css"]
   ShowTitle = true
